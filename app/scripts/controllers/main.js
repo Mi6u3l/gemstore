@@ -76,9 +76,22 @@ var gems = [{
       createdOn: 1397490980837
     }]
   }];
-  
+
 angular.module('gemStore.controllers', []).
 
- controller('storeController', function(){
-    this.products = gems;
-  });
+    controller('storeController', function(){
+        this.products = gems;
+    }).
+    controller('tabController', function(){
+        this.tab = 1;
+        this.setTab = function(value){
+            this.tab = value;
+        };
+        this.isSet = function(value)
+        {
+            if (this.tab === value)
+                return true;
+            else
+                return false;
+        };
+});
