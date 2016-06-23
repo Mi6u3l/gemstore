@@ -22,12 +22,14 @@
         <em class="pull-right">{{product.price | currency}}</em>
       </h3>
       <section ng-show="product.images.length">
-        <img ng-src="{{product.images[0]}}" />
-        <ul class="list-inline thumbs">
-          <li class="thumbnail" ng-repeat="image in product.images">
-            <img ng-src="{{image}}" />
-          </li>
-        </ul>
+          <div class='gallery' ng-show="product.images.length" ng-controller="galleryController as gallery">
+              <img ng-src="{{product.images[0]}}" />
+                <ul class="list-inline thumbs">
+                    <li class="thumbnail" ng-repeat="image in product.images">
+                        <img ng-src="{{image}}" />
+                    </li>
+                </ul>
+           </div>
       </section>
 
       <section class="tab" ng-controller="tabController as tab">
@@ -47,10 +49,20 @@
           <h4>Specs</h4>
           <blockquote>Shine: {{product.shine}} </blockquote>
         </div>
-        <div ng-show="tab.isSet(3)">
-          <h4>Reviews</h4>
-          <blockquote></blockquote>
-        </div>
+        <!--  Review Tab's Content  -->
+         <div ng-show="tab.isSet(3)">
+        <!--  Product Reviews List -->
+            <ul>
+              <h4>Reviews</h4>
+              <li ng-repeat="review in product.reviews">
+                <blockquote>
+                  <strong>{{ review.stars }} Stars</strong>
+                  {{review.body}}
+                  <cite class="clearfix">—{{ review.author}}</cite>
+                </blockquote>
+              </li>
+            </ul>
+          </div>
       </section>
     </div>
 

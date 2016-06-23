@@ -79,6 +79,15 @@ var gems = [{
 
 angular.module('gemStore.controllers', []).
 
+    controller('galleryController', function(){
+        this.current = 0;
+        this.setCurrent = function(value)
+        {
+
+            this.current = value || 0;
+                    
+        };
+    }).
     controller('storeController', function(){
         this.products = gems;
     }).
