@@ -92,11 +92,12 @@ angular.module('gemStore.controllers', []).
         this.products = gems;
     }).
 
-    controller('ReviewController', function (){
+    controller('reviewController', function (){
         this.review = {};
         this.addReview = function(product)
         {
             product.reviews.push(this.review);
+            this.review.createdOn = date.now();
             this.review = {};
         };
     }).
