@@ -85,11 +85,20 @@ angular.module('gemStore.controllers', []).
         {
 
             this.current = value || 0;
-                    
+
         };
     }).
     controller('storeController', function(){
         this.products = gems;
+    }).
+
+    controller('ReviewController', function (){
+        this.review = {};
+        this.addReview = function(product)
+        {
+            product.reviews.push(this.review);
+            this.review = {};
+        };
     }).
     controller('tabController', function(){
         this.tab = 1;
