@@ -89,9 +89,14 @@ angular.module('gemStore.controllers', ['store-directives']).
 
         };
     }).
-    controller('storeController', function(){
-        this.products = gems;
-    }).
+    controller('storeController', ['$http', function($http){
+        var store = this;
+        store.products = [];
+        $http.get('/store-products.json').success(function(data){
+            store.products = data;
+
+        });
+    }]).
 
     controller('reviewController', function (){
         this.review = {};
