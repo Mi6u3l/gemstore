@@ -9,5 +9,6 @@
  * Main module of the application.
  */
  angular.module('gemStore', [
-     'gemStore.controllers'
+     'gemStore.controllers',
+     
  ])
